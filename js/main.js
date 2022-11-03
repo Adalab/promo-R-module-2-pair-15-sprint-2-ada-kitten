@@ -80,19 +80,41 @@ function handleClickNewCatForm(event) {
     }
 }
 //Adicionar nuevo gatito
+// function addNewKitten(event) {
+//     event.preventDefault();
+//     const valueDesc = inputDesc.value;
+//     const valuePhoto = inputPhoto.value;
+//     const valueName = inputName.value;
+//     if (valueDesc === "" && valuePhoto === "" && valueName === "") {
+//         labelMesageError.innerHTML = "Debe rellenar todos los valores";
+//     } else {
+//         if (valueDesc !== "" && valuePhoto !== "" && valueName !== "") {
+//             labelMesageError.innerHTML = "";
+//         }
+//     }
+// }
+
 function addNewKitten(event) {
     event.preventDefault();
-    const valueDesc = inputDesc.value;
-    const valuePhoto = inputPhoto.value;
-    const valueName = inputName.value;
-    if (valueDesc === "" && valuePhoto === "" && valueName === "") {
-        labelMesageError.innerHTML = "Debe rellenar todos los valores";
-    } else {
-        if (valueDesc !== "" && valuePhoto !== "" && valueName !== "") {
-            labelMesageError.innerHTML = "";
-        }
-    }
-}
+      const valuePhoto = inputPhoto.value;
+      const valueName = inputName.value;
+      const valueRace = input
+      const valueDesc = inputDesc.value;
+    
+      const newKittenDataObject = {
+          photo: valuePhoto,
+          name: valueName,
+          desc: valueDesc,
+        };
+      
+    if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+      labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+    } else{
+          kittenDataList.push(newKittenDataObject);
+      }
+} 
+  //aquí falta imprimir el nuevo gatito y crear la función del mensaje de usuario mola y limpiar a su los inputs.
+  
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
     event.preventDefault();
