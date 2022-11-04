@@ -131,6 +131,7 @@ function msgNewKitten() {
 }
 
 
+
   //aquí falta imprimir el nuevo gatito y crear la función del mensaje de usuario mola y limpiar a su los inputs.
   
 //Cancelar la búsqueda de un gatito
@@ -143,7 +144,7 @@ function cancelNewKitten(event) {
 }
 
 //Filtrar por descripción
-function filterKitten(event) {
+/*function filterKitten(event) {
     event.preventDefault();
     const descrSearchText = input_search_desc.value;
     listElement.innerHTML = "";
@@ -152,7 +153,15 @@ function filterKitten(event) {
             listElement.innerHTML += renderKitten(kittenItem);
         }
     }
+}*/
+
+function filterKitten(event) {
+    event.preventDefault();
+    const filterDescKitten = kittenDataList.filter((kitten) => kitten.desc.toLowerCase().includes(input_search_desc.value));
+    renderKittenList(filterDescKitten);
+
 }
+//kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 //Mostrar el litado de gatitos en ell HTML
 renderKittenList(kittenDataList);
