@@ -10,6 +10,7 @@ const buttonCancelForm = document.querySelector('.js-btn-cancel');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
+const inputRace = document.querySelector('.js-input-race');
 const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMesageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
@@ -98,21 +99,38 @@ function addNewKitten(event) {
     event.preventDefault();
       const valuePhoto = inputPhoto.value;
       const valueName = inputName.value;
-      const valueRace = input
+      const valueRace = inputRace.value;
       const valueDesc = inputDesc.value;
     
       const newKittenDataObject = {
           photo: valuePhoto,
           name: valueName,
           desc: valueDesc,
+          race: valueRace,
         };
       
     if (valueDesc === '' || valuePhoto === '' || valueName === '') {
       labelMesageError.innerHTML = 'Debe rellenar todos los valores';
     } else{
           kittenDataList.push(newKittenDataObject);
-      }
+    }
+    cleanInputs();
+    msgNewKitten();
+    renderKittenList(kittenDataList);
+}
+
+function cleanInputs(){
+    inputDesc.value = "";
+    inputPhoto.value = "";
+    inputName.value = "";
+    inputRace.value = "";
 } 
+
+function msgNewKitten() {
+    labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
+}
+
+
   //aquí falta imprimir el nuevo gatito y crear la función del mensaje de usuario mola y limpiar a su los inputs.
   
 //Cancelar la búsqueda de un gatito
