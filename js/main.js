@@ -20,20 +20,20 @@ const input_search_desc = document.querySelector('.js_in_search_desc');
 const kittenData_1 = {
     image: "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg",
     name: "Anastacio",
-    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
+    desc: "Risueño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
     race: "British Shorthair",
 };
 const kittenData_2 = {
     image: "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg",
     name: "Fiona",
-    desc: "Juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
-    race: "British Shorthair",
+    desc: "Juguetón, dormilón  le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
+    race: "Persa",
 };
 const kittenData_3 = {
     image: "https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg",
     name: "Cielo",
-    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
-    race: "British Shorthair",
+    desc: "Risueño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
+    race: "Siamés",
 };
 
 const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
@@ -130,9 +130,6 @@ function msgNewKitten() {
     labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
 }
 
-
-
-  //aquí falta imprimir el nuevo gatito y crear la función del mensaje de usuario mola y limpiar a su los inputs.
   
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
@@ -155,15 +152,25 @@ function cancelNewKitten(event) {
     }
 }*/
 
-function filterKitten(event) {
-    event.preventDefault();
-    const filterDescKitten = kittenDataList.filter((kitten) => kitten.desc.toLowerCase().includes(input_search_desc.value));
-    renderKittenList(filterDescKitten);
-
-}
 //kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
-//Mostrar el litado de gatitos en ell HTML
+// function filterKitten(event) {
+//     event.preventDefault();
+//     const filterDescKitten = kittenDataList.filter((kitten) => kitten.desc.toLowerCase().includes(input_search_desc.value));
+//     renderKittenList(filterDescKitten);
+// }
+
+function filterKitten(ev) {
+    ev.preventDefault();
+    const kittenListFiltered = kittenDataList
+        .filter((kitten) => kitten.desc.toLowerCase().includes(input_search_desc.value))
+        .filter((kitten) => kitten.race.toLowerCase().includes(inputRace.value));
+    renderKittenList(kittenListFiltered);
+  }
+
+
+
+//Mostrar el litado de gatitos en el HTML
 renderKittenList(kittenDataList);
 
 //Eventos
