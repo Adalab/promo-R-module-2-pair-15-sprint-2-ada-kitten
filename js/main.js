@@ -15,6 +15,8 @@ const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMesageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
 
+let kittenDataList = [];
+
 
 //Objetos con cada gatito
 const kittenData_1 = {
@@ -36,7 +38,7 @@ const kittenData_3 = {
     race: "Siamés",
 };
 
-const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+//const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 //Funciones
 function renderKitten(kittenData) {
@@ -168,8 +170,6 @@ function filterKitten(ev) {
     renderKittenList(kittenListFiltered);
   }
 
-
-
 //Mostrar el litado de gatitos en el HTML
 renderKittenList(kittenDataList);
 
@@ -178,6 +178,27 @@ linkNewFormElememt.addEventListener("click", handleClickNewCatForm);
 searchButton.addEventListener("click", filterKitten);
 buttonAdd.addEventListener("click", addNewKitten);
 buttonCancelForm.addEventListener("click", cancelNewKitten);
+
+
+////////////////////////////////////PETICIONES AL SERVIDOR/////////////////////////////////////////////
+
+const GITHUB_USER = '<MariaSJ>';
+const SERVER_URL = `https://dev.adalab.es/api/kittens/${GITHUB_USER}`;
+
+fetch(SERVER_URL, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+})  .then((response) => response.json())
+    .then(kittenDataList => {
+        data = kittenDataList.results;
+        renderKittenList();   
+    })
+//REGLAR ESTO!!
+
+
+
+ 
+
 
 
 
