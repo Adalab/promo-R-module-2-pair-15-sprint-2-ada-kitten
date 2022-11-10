@@ -41,6 +41,9 @@ const kittenData_3 = {
 //const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 //Funciones
+
+/////--------EJERCICIO DOM-----------------------/////
+
 function renderKitten(kittenData) {
   const kitten = `<li class="card">
     <article>
@@ -58,6 +61,36 @@ function renderKitten(kittenData) {
     </li>`;
   return kitten;
 }
+
+function renderKitten(kittenData) {
+  const liElement = document.createElement('li');
+  liElement.classList.add('card');
+
+  const articleElement = document.createElement('article');
+
+  const imgElement = document.createElement('img');
+  imgElement.classList.add('card_img');
+  imgElement.setAttribute('src', '${kittenData.image}');
+  imgElement.setAttribute('alt', 'gatito');
+
+  const titleElement = document.createElement('h3');
+  titleElement.classList.add('card_title');
+  const titleElementText = document.createTextNode('${kittenData.name}');
+
+  const raceElement = document.createElement('h3');
+  raceElement.classList.add('card_race');
+  const raceElementText = document.createTextNode('${kittenData.race}');
+
+  const pElement = document.createElement('p');
+  pElement.classList.add('card_description');
+  const pElementText = document.createTextNode('${kittenData.desc}');
+  
+}
+
+
+
+
+
 
 function renderKittenList(kittenDataList) {
   listElement.innerHTML = "";
@@ -198,8 +231,9 @@ const SERVER_URL = `https://dev.adalab.es/api/kittens/${GITHUB_USER}`;
 
 ///////// EJERCICIOS LOCAL STORAGE /////////
 
-const kittenListStored = JSON.parse(localStorage.getItem("kittensList"));
-//console.log(kittenListStored);
+const kittenListStored = JSON.parse(localStorage.getItem('kittensList'));
+
+// console.log(kittenListStored);
 
 if (kittenListStored !== null) {
   console.log(kittenListStored);
@@ -209,8 +243,8 @@ if (kittenListStored !== null) {
   fetch(SERVER_URL)
     .then((response) => response.json())
     .then((kittens) => {
-      console.log(kittens);
       kittenDataList = kittens.results;
+      localStorage.setItem('kittensList', JSON.stringify(kittens.results));
       renderKittenList(kittenDataList);
     })
     .catch((error) => {
